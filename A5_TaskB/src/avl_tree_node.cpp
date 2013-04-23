@@ -63,19 +63,43 @@ avl_tree_node::parent () const
 void
 avl_tree_node::insert (int value_)
 {
-    //TODO: fill in your code here
+    if(value_ <= _value){
+    	if(left()==NULL){
+    		set_left(new avl_tree_node(_tree, value_));
+    		restructure();
+    	}else{
+    		left()->insert(value_);
+    	}
+    }else{
+    	if(right()==NULL){
+    		set_right(new avl_tree_node(_tree, value_));
+    		restructure();
+    	}else{
+    		right()->insert(value_);
+    	}
+
+    }
 }
 
-bool
-avl_tree_node::is_balanced () const
+bool avl_tree_node::is_balanced () const
 {
-    //TODO: fill in your code here
+	int bal = balance();
+	return std::abs(bal)<=1; //betrag der Differenz der zwei Seiten kleinergleich 1
+
 }
 
-int
-avl_tree_node::get_height () const
-{
-    //TODO: fill in your code here
+int avl_tree_node::get_height() const {
+	if (left() == NULL) {
+		return 1;
+	}
+	if (right() == NULL) {
+		return 1;
+	}
+
+	int leftb = left()->get_height() +1;
+	int rightb = right()->get_height() +1;
+	//return 1 + left()->get_height();     //this would only return the height of the left branch
+	return std::max(leftb,rightb);
 }
 
 void
@@ -128,8 +152,7 @@ avl_tree_node::restructure ()
     }
 }
 
-int
-avl_tree_node::balance () const
+int avl_tree_node::balance () const
 {
   int left_height = _left == NULL ? 0 : _left->get_height ();
   int right_height = _right == NULL ? 0 : _right->get_height ();
