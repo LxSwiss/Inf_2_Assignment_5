@@ -6,8 +6,20 @@
 #include <iostream>
 #include "selection_sort.h"
 
-void
-selection_sort (std::vector < int >&numbers)
+void selection_sort (std::vector < int >&numbers)
 {
-    //TODO: fill in your code here
+ int minEl;
+ int temp;
+ for(unsigned int i = 0; i<numbers.size(); i++){
+	 minEl = i;
+	 for(unsigned int j=i; j<numbers.size(); j++){
+		 minEl = std::min(minEl,numbers[j]);
+		 if(numbers[j]<numbers[minEl]){
+			 minEl= j;
+		 }
+	 }
+	 temp = numbers[i];
+	 numbers[i] = numbers[minEl];
+	 numbers[minEl]= temp;
+ }
 }

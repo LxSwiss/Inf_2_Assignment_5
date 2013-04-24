@@ -29,6 +29,13 @@ int HashTable::hashfunction(int key_){
 
 void HashTable::put(Item* item){
     //TODO: fill in your code here
+	int key = item->getKey();
+	int cell = hashfunction(key);
+	while(table[cell] != NULL){
+		cell = hashfunction(key++);
+	}
+	table[cell]= item;
+
 }
 
 Item* HashTable::get(int key_){
