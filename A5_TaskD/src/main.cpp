@@ -29,8 +29,8 @@ main (int argc, const char *argv[])
   // Each of these should work           
   //selection_sort(unsorted_list);
   //merge_sort(unsorted_list);
-  bucket_sort(unsorted_list);
-  //radix_sort(unsorted_list);
+ // bucket_sort(unsorted_list);
+  radix_sort(unsorted_list);
 
   std::cout << std::endl << "sorted list   : ";
   for (int i = 0; i < 120; i++)

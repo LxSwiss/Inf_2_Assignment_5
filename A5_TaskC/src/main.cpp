@@ -29,7 +29,7 @@ int main (int argc, const char * argv[])
     
     char mode;
     std::cout << "Choose Mode: l for linear probing,  q for quadratic probing: ";
-    std::cin >> mode;
+std::cin >> mode;
     
     if (mode == 'l') {
         hashtable.put(hendrix);

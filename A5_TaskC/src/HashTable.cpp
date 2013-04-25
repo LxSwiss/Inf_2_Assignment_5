@@ -28,18 +28,30 @@ int HashTable::hashfunction(int key_){
 }
 
 void HashTable::put(Item* item){
-   /* //TODO: fill in your code here
+
 	int key = item->getKey();
 	int cell = hashfunction(key);
-	while(table[cell] != NULL){
-		cell = hashfunction(key++);
+
+	if(table[cell]== NULL){
+		table[cell]=item;
+	}else{
+		int counter=1;
+
+		while(table[cell+counter] != NULL){
+			counter++;
+		}
+		table[cell+counter] = item;
 	}
-	table[cell]= item;*/
+
+
+
+
 
 }
 
 Item* HashTable::get(int key_){
     //TODO: fill in your code here
+	return NULL;
 }
 
 void HashTable::putQuadratic(Item* item){
