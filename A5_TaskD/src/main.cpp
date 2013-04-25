@@ -19,7 +19,7 @@ main (int argc, const char *argv[])
   std::vector < int >unsorted_list;
 
   std::cout << "unsorted array: ";
-  for (int i = 0; i < 12; i++)
+  for (int i = 0; i < 120; i++)
     {
       int rnumber = rand () % 1000;
       unsorted_list.push_back (rnumber);
@@ -28,12 +28,12 @@ main (int argc, const char *argv[])
 
   // Each of these should work           
   //selection_sort(unsorted_list);
-  merge_sort(unsorted_list);
-  //bucket_sort(unsorted_list);
+  //merge_sort(unsorted_list);
+  bucket_sort(unsorted_list);
   //radix_sort(unsorted_list);
 
   std::cout << std::endl << "sorted list   : ";
-  for (int i = 0; i < 12; i++)
+  for (int i = 0; i < 120; i++)
     {
       std::cout << unsorted_list[i] << "  ";
     }
