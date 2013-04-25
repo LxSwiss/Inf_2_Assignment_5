@@ -28,8 +28,20 @@ int main (int argc, const char * argv[])
     HashTable hashtable = HashTable();
     
     char mode;
-    std::cout << "Choose Mode: l for linear probing,  q for quadratic probing: ";
-std::cin >> mode;
+  std::cout << "Choose Mode: l for linear probing,  q for quadratic probing: ";
+  std::cin >> mode;
+
+
+    	/*hashtable.put(hendrix);
+       hashtable.put(marley);
+       hashtable.put(jackson);
+       hashtable.put(shakur);
+       hashtable.put(cobain);
+       hashtable.put(elvis);
+       hashtable.put(charles);
+       hashtable.put(lennon);
+
+       hashtable.printContent(); */
     
     if (mode == 'l') {
         hashtable.put(hendrix);

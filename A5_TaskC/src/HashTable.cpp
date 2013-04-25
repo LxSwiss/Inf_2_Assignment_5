@@ -17,6 +17,13 @@
 HashTable::HashTable(){
     table = new Item*[TABLE_SIZE];
     
+
+    //by Alex
+    for(int i=0; i<TABLE_SIZE; i++){
+    	table[i]=NULL;
+    }
+
+
     //Using MAD compression map, therefore we need factors a and b
     factor_a = 7;
     factor_b = 13;
@@ -28,38 +35,58 @@ int HashTable::hashfunction(int key_){
 }
 
 void HashTable::put(Item* item){
+	int counter=0;
+		int key = item->getKey();
+		int cell = hashfunction(key+counter);
 
-	int key = item->getKey();
-	int cell = hashfunction(key);
-
-	if(table[cell]== NULL){
-		table[cell]=item;
-	}else{
-		int counter=1;
-
-		while(table[cell+counter] != NULL){
+		while(table[cell] != NULL){
 			counter++;
+			cell = hashfunction(key+counter);
 		}
-		table[cell+counter] = item;
-	}
 
-
-
-
-
+		table[cell] = item;
 }
 
 Item* HashTable::get(int key_){
-    //TODO: fill in your code here
-	return NULL;
+		int cell = hashfunction(key_);
+
+		if(table[cell]->getKey()== key_){
+			return table[cell];
+		}else{
+			int counter=1;
+			while(table[cell]->getKey()!= key_){
+				counter++;
+			}
+			return table[cell+counter];
+		}
 }
 
 void HashTable::putQuadratic(Item* item){
-    //TODO: fill in your code here
+	int counter=0;
+	int key = item->getKey();
+	int cell = hashfunction(key+counter*counter);
+
+	while(table[cell] != NULL){
+		counter++;
+		cell = hashfunction(key+counter*counter);
+	}
+
+	table[cell] = item;
 }
 
 Item* HashTable::getQuadratic(int key_){
-    //TODO: fill in your code here
+	int cell = hashfunction(key_);
+
+			if(table[cell]->getKey()== key_){
+				return table[cell];
+			}else{
+				int counter=1;
+				while(table[cell]->getKey()!= key_){
+					cell = hashfunction(key_+counter*counter);
+					counter++;
+				}
+				return table[cell];
+			}
 }
 
 void HashTable::printContent(){
