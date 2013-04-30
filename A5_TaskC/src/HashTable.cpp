@@ -15,13 +15,7 @@
 
 
 HashTable::HashTable(){
-    table = new Item*[TABLE_SIZE];
-    
-
-    //by Alex
-    for(int i=0; i<TABLE_SIZE; i++){
-    	table[i]=NULL;
-    }
+    table = new Item*[TABLE_SIZE]();
 
 
     //Using MAD compression map, therefore we need factors a and b

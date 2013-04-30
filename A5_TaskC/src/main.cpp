@@ -24,7 +24,7 @@ int main (int argc, const char * argv[])
     Item* elvis = new Item(10, "Elvis Presley");
     Item* lennon = new Item(11, "John Lennon");
     Item* charles = new Item(31, "Ray Charles");
-    
+
     HashTable hashtable = HashTable();
     
     char mode;
